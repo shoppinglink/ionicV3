@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { Http } from '../../providers/http';
+import { HttpService } from '../../providers/httpService';
 import { Strings }from '../../providers/strings';
 
 @Component({
@@ -9,13 +9,17 @@ import { Strings }from '../../providers/strings';
   templateUrl: 'home.html'
 })
 export class HomePage {
+    jokeList:any;
 
-  constructor(public navCtrl: NavController,public storage:Storage,private http:Http) {
+  constructor(public navCtrl: NavController,private httpService:HttpService) {
     this.initData();
   }
 
   initData(){
-      this.http.mobPostHistory();
+      this.httpService.mobPostJoke(1).then(list=>{
+          console.log(list);
+          this.jokeList = list;
+      });          
   }
 
 }

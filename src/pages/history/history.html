@@ -8,10 +8,6 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+      <ion-item *ngFor="let item of historyList" (click)="onClickHistoryDetail(item)">{{item.title}}</ion-item>
   </ion-list>
 </ion-content>

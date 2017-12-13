@@ -8,7 +8,8 @@ export class Strings{
 	}
 	yy:any={
 		appid:'51921',
-		secret:'42de08e4f6ff407c82e232175ba70914',
+        secret:'42de08e4f6ff407c82e232175ba70914',
+        max_result:20,
 		joke_txt_url:'https://route.showapi.com/341-1',
 		joke_img_url:'https://route.showapi.com/341-2',
 		joke_gif_url:'https://route.showapi.com/341-3',
