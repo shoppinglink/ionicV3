@@ -8,6 +8,9 @@
 
 <ion-content>
   <ion-list>
-      <ion-item *ngFor="let item of historyList" (click)="onClickHistoryDetail(item)">{{item.title}}</ion-item>
+        <ion-item *ngFor="let item of historyList" (click)="onClickHistoryDetail(item)">
+            <div class="item-title">{{item.title}}</div>
+            <div class="item-date">--{{item.date}}</div>
+        </ion-item>
   </ion-list>
 </ion-content>
