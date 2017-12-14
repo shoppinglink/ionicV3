@@ -4,9 +4,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <div *ngFor="let item of jokeList">
-        <div>{{item.title}}</div>
-        <div>{{item.text}}</div>
+<ion-content class="main-content">
+    <div *ngFor="let item of jokeList" class="item-container">
+        <div class="item-title">{{item.title}}</div>
+        <div class="item-text">{{item.text}}</div>
     </div>
 </ion-content>
