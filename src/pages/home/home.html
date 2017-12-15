@@ -1,15 +1,32 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>首页</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content class="main-content">
-    <div *ngFor="let item of jokeList" class="item-container">
-        <div class="item-title">{{item.title}}</div>
-        <div class="item-text">{{item.text}}</div>
+    <div class="segment">
+        <ion-segment [(ngModel)]="joke">
+            <ion-segment-button value="txt" (ionSelect)="onSelectSegment('txt')">文本</ion-segment-button>
+            <ion-segment-button value="img" (ionSelect)="onSelectSegment('img')">图片</ion-segment-button>
+            <ion-segment-button value="gif" (ionSelect)="onSelectSegment('gif')">动态</ion-segment-button>
+        </ion-segment>
     </div>
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <div [ngSwitch]="joke" class="content">
+        <div *ngSwitchCase="'txt'">
+            <div *ngFor="let item of jokeList" class="item-container">
+                <div class="item-title">{{item.title}}</div>
+                <div class="item-text">{{item.text}}</div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'img'">
+            <div *ngFor="let item of jokeList">
+                <div>{{item.title}}</div>
+                <img [src]="item.img"/>
+            </div>    
+        </div>
+        <div *ngSwitchCase="'gif'">
+            <div *ngFor="let item of jokeList">
+                <div>{{item.title}}</div>
+                <img [src]="item.img"/>
+            </div> 
+        </div>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" distance="5%" immediate-check="false">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>
