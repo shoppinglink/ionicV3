@@ -2,8 +2,7 @@ page-history {
     .item-title{
         font-size:20px;
         width: 100%;
-        word-break:break-all;
-        word-wrap: break-word;
+        white-space: normal;
     }
     .item-date{
         float:right;

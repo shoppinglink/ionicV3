@@ -9,4 +9,7 @@
         <div class="item-title">{{item.title}}</div>
         <div class="item-text">{{item.text}}</div>
     </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
