@@ -1,8 +1,6 @@
 import { Component,ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { HttpService } from '../../providers/httpService';
-import { Strings }from '../../providers/strings';
 import { Content } from 'ionic-angular/components/content/content';
 
 @Component({
@@ -21,14 +19,14 @@ export class HomePage {
   }
 
   initData(){
-      console.log('init');
+      //console.log('init');
       this.httpService.mobPostJoke(this.currentPage,this.joke).then(list=>{
           this.jokeList = list;
       });          
   }
 
   onSelectSegment(value){
-      console.log('select');
+      //console.log('select');
       if(value==this.joke){
             this.content.scrollToTop();
           return;

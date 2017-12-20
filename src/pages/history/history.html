@@ -6,11 +6,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-        <ion-item *ngFor="let item of historyList" (click)="onClickHistoryDetail(item)">
+<ion-content class="main-content">
+  <div>
+        <div class="item-container" *ngFor="let item of historyList" (click)="onClickHistoryDetail(item)">
             <div class="item-title">{{item.title}}</div>
             <div class="item-date">--{{item.date}}</div>
-        </ion-item>
-  </ion-list>
+        </div>
+  </div>
 </ion-content>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpService } from '../../providers/httpService';
 import { HistoryDetailPage } from '../history/historydetail/historydetail'
-import { DateTime } from 'ionic-angular/components/datetime/datetime';
 
 @Component({
   selector: 'page-history',
@@ -12,7 +11,7 @@ export class HistoryPage {
     historyList:any;
     currentDate;
 
-  constructor(public navCtrl: NavController,private httpService:HttpService) {
+  constructor(public navCtrl: NavController,public httpService:HttpService) {
       this.initData();
 
   }

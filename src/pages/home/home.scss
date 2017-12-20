@@ -14,8 +14,15 @@ page-home {
         width: 100%;
         top:0;
     }
-    .content{
-        
+    .img-content{
+        display:flex;
+        align-items:center;
+        flex-direction:column;
+        justify-content:center;
+        background-color:#ffffff;
+        margin:5px;
+        margin-bottom:6px;
+        border-radius: 10px;       
     }
     .item-title{
         text-align: center;

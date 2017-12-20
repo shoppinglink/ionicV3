@@ -5,19 +5,24 @@ import { LoadingController } from "ionic-angular/components/loading/loading-cont
 
 @Injectable()
 export class HttpService{
-    constructor(private strings:Strings,private http:Http,private loadingCtrl:LoadingController){}
+    constructor(public strings:Strings,public http:Http,public loadingCtrl:LoadingController){}
 
     mobGetHistory(day){
         let url = this.strings.mob.history_url+'?key='+this.strings.mob.key+'&day='+day;
         let header = new Headers();
         header.append('Content-Type','application/x-www-form-urlencoded');
         return new Promise((resolve,reject)=>{
+            let loading = this.loadingCtrl.create({
+                content:'加载中...',
+            });
             this.http.get(url,{headers:header}).subscribe(response=>{
                 //console.log(response.json());
                 resolve(response.json().result);
+                loading.dismiss(); 
             },error=>{
                 //console.log(error);
                 reject(error);
+                loading.dismiss(); 
                 });
         })
     }
@@ -27,12 +32,19 @@ export class HttpService{
         let header = new Headers();
         header.append('Content-Type','application/x-www-form-urlencoded');
         return new Promise((resolve,reject)=>{
+            let loading = this.loadingCtrl.create({
+                content:'加载中...',
+            });
+            loading.present();
             this.http.post(url,this.objectTransForm(prama),{headers:header}).subscribe(response=>{
                 //console.log(response);
-                resolve(response.json().result);
+                let result = response.json().result;
+                resolve(result);
+                loading.dismiss(); 
             },error=>{
-                //console.log(error);
+                console.log(error);
                 reject(error);
+                loading.dismiss(); 
             })
         })
         
@@ -61,7 +73,7 @@ export class HttpService{
             this.http.post(url,this.objectTransForm(prama),{headers:header}).subscribe(response=>{
                 let list =response.json().showapi_res_body.contentlist;
                 resolve(list);
-                console.log(list); 
+                //console.log(list); 
                 loading.dismiss();               
             },error=>{
                 console.log(error);
