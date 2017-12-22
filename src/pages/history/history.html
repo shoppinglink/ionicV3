@@ -17,9 +17,9 @@
     -->
     <div>
         <div class="item-container" *ngFor="let item of historyList">
-            <img *ngIf="item.img!=undefined" src="{{item.img}}" >
+            <img *ngIf="item.img!=undefined" [src]="item.img" />
             <div class="item-title">{{item.title}}</div>
-            <div class="item-date">{{item.year}}.{{item.month}}.{{item.day}}</div>
+            <div class="item-date">--{{item.year}}.{{item.month}}.{{item.day}}</div>
         </div>
     </div>
 </ion-content>
