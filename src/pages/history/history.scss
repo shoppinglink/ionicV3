@@ -4,10 +4,11 @@ page-history {
 	}
     .item-title{
         font-size:20px;
-        width: 100%;
-        white-space: normal;
+        word-wrap: break-word;
+        word-break: break-all;
         margin:5px;
-        margin-left:10px;
+        margin-left:15px;
+        max-width: 92%;
     }
     .item-container{
     	margin:5px;

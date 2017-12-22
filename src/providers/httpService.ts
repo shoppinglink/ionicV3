@@ -50,7 +50,30 @@ export class HttpService{
         
     }
 
-    mobPostJoke(page,type){
+    yyPostHistory(day){
+        let url = this.strings.yy.history_url;
+        let prama = {showapi_appid:this.strings.yy.appid,showapi_sign:this.strings.yy.secret}
+        let header = new Headers();
+        header.append('Content-Type','application/x-www-form-urlencoded');
+        return new Promise((resolve,reject)=>{
+            let loading = this.loadingCtrl.create({
+                content:'加载中...',
+            });
+            loading.present();
+            this.http.post(url,this.objectTransForm(prama),{headers:header}).subscribe(response=>{
+                let list =response.json().showapi_res_body.list;
+                //console.log(list);
+                resolve(list);
+                loading.dismiss(); 
+            },error=>{
+                console.log(error);
+                reject(error);
+                loading.dismiss(); 
+            })
+        })
+    }
+
+    yyPostJoke(page,type){
         let url;
         if(type=='txt'){
             url = this.strings.yy.joke_txt_url;
@@ -82,6 +105,7 @@ export class HttpService{
             })
         })
     }
+
 
     objectTransForm(object){
         var str = [];

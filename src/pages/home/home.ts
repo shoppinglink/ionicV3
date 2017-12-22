@@ -20,7 +20,7 @@ export class HomePage {
 
   initData(){
       //console.log('init');
-      this.httpService.mobPostJoke(this.currentPage,this.joke).then(list=>{
+      this.httpService.yyPostJoke(this.currentPage,this.joke).then(list=>{
           this.jokeList = list;
       });          
   }
@@ -33,14 +33,14 @@ export class HomePage {
       }
       this.currentPage = 1;
     this.content.scrollToTop(); 
-    this.httpService.mobPostJoke(this.currentPage,value).then(list=>{
+    this.httpService.yyPostJoke(this.currentPage,value).then(list=>{
         this.jokeList = list;
     });
     }
 
   doInfinite(infiniteScroll){
         this.currentPage++;
-        this.httpService.mobPostJoke(this.currentPage,this.joke).then(list=>{
+        this.httpService.yyPostJoke(this.currentPage,this.joke).then(list=>{
             for(let i=0;i<Object.keys(list).length;i++){
               this.jokeList.push(list[i]);
             };
